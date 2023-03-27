@@ -21,6 +21,7 @@ router.post('/',
             objFormToJson = JSON.parse(objFormToJson);
             objFormToJson.nroDocumento = parseInt(objFormToJson.nroDocumento);
             objFormToJson.telefono = parseInt(objFormToJson.telefono);
+            objFormToJson.autorizoActo = parseInt(objFormToJson.autorizoActo);
 
             //imagen
             console.log(req.file?.filename);
