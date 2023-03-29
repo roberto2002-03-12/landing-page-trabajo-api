@@ -16,7 +16,7 @@ const createUser = async (obj) => {
 
     if (usuario !== null) throw boom.unauthorized('Email ya registrado');
 
-    if (obj.userClave !== config.keyUser) throw boom.unauthorized('Email ya registrado');
+    if (obj.userClave !== config.keyUser) throw boom.unauthorized('Datos invalidos');
 
     const hash = await bcrypt.hash(obj.password, 10);
 
