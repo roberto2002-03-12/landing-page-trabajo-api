@@ -20,10 +20,9 @@ router.post('/',
 
 router.get('/',
     passport.authenticate('jwt', {session: false}),
-    validatorHandler(listarMensajesSchema, 'query'),
+    //validatorHandler(listarMensajesSchema, 'query'),
     async (req, res, next) => {
         try {
-            console.log(req.query);
             const respuesta = await listarMensajes(req?.query);
             res.status(200).json(respuesta);
         } catch (err) {

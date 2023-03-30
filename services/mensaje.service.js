@@ -44,8 +44,12 @@ const listarMensajes = async (query) => {
     if (offset) opciones.offset = parseInt(offset);
 
     const mensajes = await models.Mensaje.findAll(opciones);
+    const cantidad = await models.Mensaje.count();
 
-    return mensajes;
+    return {
+        mensajes,
+        cantidad
+    };
 };
 
 const crearMensaje = async (obj) => {
