@@ -11,10 +11,6 @@ const listarMensajes = async (query) => {
         offset: 0
     };
 
-    const opciones2 = {
-        where: {}
-    }
-
     if (nombre_completo) {
         opciones.where = {
             nombreCompleto: {
@@ -46,9 +42,11 @@ const listarMensajes = async (query) => {
 
     if (limit) opciones.limit = parseInt(limit);
     if (offset) opciones.offset = parseInt(offset);
-    opciones2.where = opciones.where;
+
     const mensajes = await models.Mensaje.findAll(opciones);
-    const cantidad = await models.Mensaje.count(opciones2);
+    const cantidad = await models.Mensaje.count({
+        where: opciones.where
+    });
 
     return {
         mensajes,

@@ -57,8 +57,14 @@ const listarFormularios = async (query) => {
     if (offset) opciones.offset = parseInt(offset);
 
     const formularios = await models.FormularioReclamo.findAll(opciones);
-
-    return formularios;
+    const cantidad = await models.FormularioReclamo.count({
+        where: opciones.where
+    });
+    
+    return {
+        formularios,
+        cantidad
+    };
 };
 
 const seleccionarFormulario = async (id) => {
