@@ -54,7 +54,7 @@ const changePasswordAuth = async (id, contrasena) => {
     const user = await models.User.findByPk(id);
 
     if (!user) throw boom.notFound('No puedes cambiar un email de un usuario inexistente');
-    console.log(contrasena);
+    
     const hash = await bcrypt.hash(contrasena, 10);
 
     await user.update({

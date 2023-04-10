@@ -24,10 +24,9 @@ router.post('/',
             objFormToJson.autorizoActo = parseInt(objFormToJson.autorizoActo);
 
             //imagen
-            console.log(req.file?.filename);
             const file = req.file?.location;
             const fileName = getName(file);
-            console.log('este es file: ', file, ' y este fileName: ', fileName);
+            
             objFormToJson.documentoNombre = fileName;
             objFormToJson.documentoLink = file;
 
@@ -37,7 +36,6 @@ router.post('/',
                 const formulario = await subirFormulario(objFormToJson);
                 res.status(201).json(formulario);
             } else {
-                console.log('este es el nombre: ',fileName);
                 await s3.deleteObject({ Bucket: process.env.AWS_BUCKET_NAME, Key: fileName }).promise();
                 throw boom.badRequest(resultadoValidacion);
             }
