@@ -2,13 +2,13 @@ const Joi = require('joi');
 
 const idblog = Joi.number();
 const titulo = Joi.string().max(45);
-const descripcion = Joi.string().min(100).max(1000);
+const descripcion = Joi.string().max(1000);
 const imagen = Joi.string();
 const urlImagen = Joi.string();
 const urlBlog = Joi.string();
 const categoriaId = Joi.number();
 
-const registrarBlog = Joi.object({
+const registrarBlogSchema = Joi.object({
     titulo: titulo.required(),
     descripcion: descripcion.required(),
     imagen: imagen.required(),
@@ -17,6 +17,16 @@ const registrarBlog = Joi.object({
     categoriaId: categoriaId.optional()
 });
 
+const actualizarBlogSchema = Joi.object({
+    titulo: titulo.optional(),
+    descripcion: descripcion.optional(),
+    imagen: imagen.optional(),
+    urlImagen: urlImagen.optional(),
+    urlBlog: urlBlog.optional(),
+    categoriaId: categoriaId.optional()
+});
+
 module.exports = {
-    registrarBlog
-}
+    registrarBlogSchema,
+    actualizarBlogSchema
+};
