@@ -86,7 +86,12 @@ const eliminarBlog = async (id) => {
 };
 
 const buscarBlog = async (id) => {
-    const blog = await models.Blog.findByPk(id);
+    const blog = await models.Blog.findByPk(id, { 
+        include: [{
+            model: Categoria,
+            as: 'categoria',
+        }]
+    });
 
     if (!blog) throw boom.notFound('No se encontro el blog');
 

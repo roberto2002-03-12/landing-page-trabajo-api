@@ -56,6 +56,18 @@ router.get('/',
   }
 );
 
+router.get('/:id',
+  async (req, res, next) => {
+    try {
+      const { id } = req.params
+      const blog = await buscarBlog(id);
+      res.status(200).json(blog);
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
 router.put('/:id',
   passport.authenticate('jwt', {session: false}),
   fileUpload.single('foto_blog'),

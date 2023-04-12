@@ -17,10 +17,14 @@ const actualizarCategoria = async (id, obj) => {
   return 'Categoria actualizada correctamente';
 };
 
-const listarCategoria = async (id, obj) => {
-  const listaCat = await models.Categoria.findAll();
+const listarCategoria = async () => {
+  const categorias = await models.Categoria.findAll();
+  const cantidad = await models.Categoria.count();
 
-  return listaCat;
+  return {
+    categorias,
+    cantidad
+  };
 };
 
 const eliminarCategoria = async (id) => {
