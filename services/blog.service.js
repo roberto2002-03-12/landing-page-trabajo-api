@@ -75,8 +75,9 @@ const eliminarBlog = async (id) => {
     const blog = await models.Blog.findByPk(id);
 
     if (!blog) throw boom.notFound('No puedes eliminar algo que no existe');
-
+    console.log(blog);
     const fileName = blog.dataValues.imagen;
+    console.log(fileName);
 
     await s3.deleteObject({Bucket: process.env.AWS_BUCKET_NAME, Key: fileName}).promise();
 

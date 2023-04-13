@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 const idblog = Joi.number();
 const titulo = Joi.string().max(45);
-const descripcion = Joi.string().max(1000);
+const descripcion = Joi.string().max(1001);
 const imagen = Joi.string();
 const urlImagen = Joi.string();
 const urlBlog = Joi.string();

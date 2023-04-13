@@ -26,7 +26,7 @@ router.post('/',
 
       const file = req.file?.location;
       const fileName = getName(file);
-
+      
       objFormToJson.imagen = fileName;
       objFormToJson.urlImagen = file;
 
