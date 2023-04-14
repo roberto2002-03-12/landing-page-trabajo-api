@@ -39,9 +39,9 @@ const listarBlogs = async (query) => {
             opciones.where, { categoriaId: categoria_blog }
         );
     };
-
-    if (limit) opciones.limit = parseInt(limit);
-    if (offset) opciones.offset = parseInt(offset);
+    console.log(limit);
+    if (limit !== undefined) opciones.limit = parseInt(limit);
+    if (offset !== undefined) opciones.offset = parseInt(offset);
 
     const blogs = await models.Blog.findAll(opciones);
     const cantidad = await models.Blog.count({

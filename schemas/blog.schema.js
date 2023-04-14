@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
-const titulo = Joi.string().max(45);
-const descripcion = Joi.string().max(1001);
+const titulo = Joi.string().max(105).min(6);
+const descripcion = Joi.string().max(1001).min(100);
 const imagen = Joi.string();
 const urlImagen = Joi.string();
 const urlBlog = Joi.string();

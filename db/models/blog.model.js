@@ -12,11 +12,11 @@ const BlogSchema = {
         primaryKey: true
     },
     titulo: {
-        type: DataTypes.STRING(45),
+        type: DataTypes.STRING(105),
         allowNull: false
     },
     descripcion: {
-        type: DataTypes.TEXT('tiny'),
+        type: DataTypes.TEXT('medium'),
         allowNull: false,
         validate: {
             len: [100, 1000]
