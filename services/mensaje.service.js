@@ -1,6 +1,8 @@
 const boom = require('@hapi/boom');
 const { models } = require('../libs/sequelize');
 const { Sequelize, Op } = require('sequelize');
+const { config } = require('../config/config');
+const axios = require('axios').default;
 
 const listarMensajes = async (query) => {
     const { nombre_completo, fecha_creada, limit, offset } = query || {};
@@ -55,6 +57,14 @@ const listarMensajes = async (query) => {
 };
 
 const crearMensaje = async (obj) => {
+    const respuesta = await axios.post(
+        `https://www.google.com/recaptcha/api/siteverify?secret=${config.googleCaptchaKey}&response=${obj.captchaToken}`
+    );
+
+    if (respuesta.data.success == false) throw boom.badRequest('Por favor verifique que es humano');
+
+    delete obj.captchaToken;
+
     const mensaje = models.Mensaje.create(obj);
 
     return mensaje;

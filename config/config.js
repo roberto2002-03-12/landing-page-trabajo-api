@@ -13,9 +13,10 @@ const config = {
     passRecype: process.env.PASS_RECYPE,
     awsAccessKey:  '',
     awsAccessId:  '',
-    awsBucket:  'ucvcid-test-1',
-    awsRegion:  'sa-east-1',
-    keyUser: process.env.KEY_USER
+    awsBucket:  '',
+    awsRegion:  '',
+    keyUser: process.env.KEY_USER,
+    googleCaptchaKey: process.env.GOOGLE_CAPTCHA_KEY
 };
 
 module.exports = {config};

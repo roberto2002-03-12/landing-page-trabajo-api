@@ -19,6 +19,7 @@ const documentoLink = Joi.string();
 const detalleDelProducto = Joi.string().max(250);
 const detalleDelReclamo = Joi.string().max(250);
 const autorizoActo = Joi.number().max(1);
+const captchaToken = Joi.string();
 
 //queries
 const createdAt = Joi.string().pattern(/^\d{4}-\d{2}-\d{2}$/);
@@ -44,6 +45,7 @@ const subirFormularioSchema = Joi.object({
     detalleDelProducto: detalleDelProducto.required(),
     detalleDelReclamo: detalleDelReclamo.required(),
     autorizoActo: autorizoActo.required(),
+    captchaToken: captchaToken.required()
 });
 
 const listarFormularioSchema = Joi.object({
