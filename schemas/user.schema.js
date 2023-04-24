@@ -3,7 +3,7 @@ const Joi = require('joi');
 const email = Joi.string().email();
 const password = Joi.string().min(8);
 const token = Joi.string().min(60);
-const userClave = Joi.string().max(15); //dyf-pruebas-dev
+const userClave = Joi.string().max(70);
 
 const registrarUsuarioSchema = Joi.object({
     email: email.required(),

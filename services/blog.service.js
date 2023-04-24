@@ -23,7 +23,8 @@ const listarBlogs = async (query) => {
         include: [{
             model: Categoria,
             as: 'categoria',
-        }]
+        }],
+        order: [['createdAt', 'DESC']]
     };
 
     if (titulo_blog) {

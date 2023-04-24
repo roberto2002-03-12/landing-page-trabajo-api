@@ -10,7 +10,8 @@ const listarMensajes = async (query) => {
     const opciones = {
         where: {},
         limit: 20,
-        offset: 0
+        offset: 0,
+        order: [['createdAt', 'DESC']]
     };
 
     if (nombre_completo) {
