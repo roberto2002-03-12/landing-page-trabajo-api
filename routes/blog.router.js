@@ -25,7 +25,7 @@ router.post('/',
       }
 
       const file = req.file?.location;
-      const fileName = getName(file);
+      const fileName = req.file?.key;
       
       objFormToJson.imagen = fileName;
       objFormToJson.urlImagen = file;
@@ -81,7 +81,7 @@ router.put('/:id',
       }
 
       const file = req.file?.location || 'empty';
-      const fileName = getName(file) || 'empty';
+      const fileName = req.file?.key || 'empty';
 
       objFormToJson.imagen = fileName;
       objFormToJson.urlImagen = file;
