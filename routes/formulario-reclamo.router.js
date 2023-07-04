@@ -8,7 +8,6 @@ const boom = require('@hapi/boom');
 const validatorFormulario = require('../helpers/validatorFormulario');
 const aws = require('aws-sdk');
 const { subirFormularioSchema, listarFormularioSchema, seleccionarFormularioSchema } = require('../schemas/formulario-reclamo.schema');
-const { getName } = require('../helpers/getNameFromUrl');
 
 const router = express.Router();
 const s3 = new aws.S3();
@@ -25,7 +24,7 @@ router.post('/',
 
             //imagen
             const file = req.file?.location;
-            const fileName = getName(file);
+            const fileName = req.file?.key;
             
             objFormToJson.documentoNombre = fileName;
             objFormToJson.documentoLink = file;
